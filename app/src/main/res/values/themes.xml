@@ -5,5 +5,10 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="Base.Theme.NashBonus.Transparent" parent="Base.Theme.NashBonus">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
     <style name="Theme.NashBonus" parent="Base.Theme.NashBonus" />
 </resources>
