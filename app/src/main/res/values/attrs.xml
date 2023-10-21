@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NashaButtonView">
+        <attr name="button_is_bold" format="boolean" />>
+        <attr name="button_is_disabled" format="boolean" />
+        <attr name="button_text" format="string|reference" />
+        <attr name="button_icon" format="integer" />
+    </declare-styleable>
+</resources>
