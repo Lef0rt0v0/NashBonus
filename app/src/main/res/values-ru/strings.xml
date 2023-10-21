@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NashBonus</string>
+    <string name="get_code">Получить код</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="accept_terms_of_use">Условия использования</string>
+    <string name="guest_log_in">Гостевой вход</string>
+    <string name="enter_code">Введите код</string>
+    <string name="send_code_again">Получить код повторно</string>
+    <string name="help1">На ваш номер отправлен код подтверждения, если он не пришёл нажмите на кнопку получить код повторно</string>
+</resources>

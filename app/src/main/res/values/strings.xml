@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NashBonus</string>
+    <string name="get_code">Get code</string>
+    <string name="get_code">Get code</string>
+    <string name="phone_number">Phone number</string>
+    <string name="accept_terms_of_use">Accept use terms</string>
+    <string name="guest_log_in">Log in as guest</string>
+    <string name="enter_code">Enter code</string>
+    <string name="send_code_again">Send code again</string>
+    <string name="help1">A confirmation code has been sent to your number, if it has not arrived, click on the button to get the code again</string>
 </resources>
