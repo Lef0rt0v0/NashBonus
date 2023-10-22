@@ -7,4 +7,5 @@
     <string name="enter_code">Enter code</string>
     <string name="send_code_again">Send code again</string>
     <string name="help1">A confirmation code has been sent to your number, if it has not arrived, click on the button to get the code again</string>
+    <string name="screen_main_title">My cards</string>
 </resources>
