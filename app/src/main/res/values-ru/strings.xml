@@ -9,4 +9,5 @@
     <string name="send_code_again">Получить код повторно</string>
     <string name="help1">На ваш номер отправлен код подтверждения, если он не пришёл нажмите на кнопку получить код повторно</string>
     <string name="screen_main_title">Мои карты</string>
+    <string name="synced">Не синхронизированно</string>
 </resources>
