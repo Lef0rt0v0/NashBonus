@@ -11,4 +11,9 @@
     <string name="screen_main_title">Мои карты</string>
     <string name="synced">Не синхронизированно</string>
     <string name="information">Информация</string>
+    <string name="city">Город</string>
+    <string name="email">Электронная почта</string>
+    <string name="ready">Готово</string>
+    <string name="shop">Магазин</string>
+    <string name="cardNumber">Номекр карты</string>
 </resources>

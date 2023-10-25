@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintHorizontal_chainStyle="packed">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/listenerEdit4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="-20dp"
+        android:layout_marginBottom="-20dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Edit4"
+        app:layout_constraintEnd_toEndOf="@+id/Edit4"
+        app:layout_constraintStart_toEndOf="@+id/emailEdit"
+        app:layout_constraintTop_toTopOf="@+id/Edit4" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/listenerEdit3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="-20dp"
+        android:layout_marginBottom="-20dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Edit3"
+        app:layout_constraintEnd_toEndOf="@+id/Edit3"
+        app:layout_constraintStart_toStartOf="@+id/Edit3"
+        app:layout_constraintTop_toTopOf="@+id/Edit3" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/listenerEdit2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="-20dp"
+        android:layout_marginBottom="-20dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Edit2"
+        app:layout_constraintEnd_toEndOf="@+id/Edit2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Edit2"
+        app:layout_constraintTop_toTopOf="@+id/Edit2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/Edit2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:alpha="0.5"
+        android:src="@tools:sample/avatars"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneNumberEdit"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@+id/phoneNumberEdit"
+        app:srcCompat="@drawable/ic_edit"
+        app:tint="@color/foreground" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.8"
+        android:fontFamily="@font/zen_regular"
+        android:text="@string/email"
+        android:textColor="@color/foreground"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityEdit" />
+
+    <EditText
+        android:id="@+id/emailEdit"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/card"
+        android:ems="10"
+        android:fontFamily="@font/zen_regular"
+        android:hyphenationFrequency="normal"
+        android:inputType="phone"
+        android:padding="11dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/foreground"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/Edit4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.8"
+        android:fontFamily="@font/zen_regular"
+        android:text="@string/city"
+        android:textColor="@color/foreground"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberEdit" />
+
+    <EditText
+        android:id="@+id/cityEdit"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/card"
+        android:ems="10"
+        android:fontFamily="@font/zen_regular"
+        android:hyphenationFrequency="normal"
+        android:inputType="phone"
+        android:padding="11dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/foreground"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/Edit3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityName" />
+
+    <TextView
+        android:id="@+id/phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:alpha="0.8"
+        android:fontFamily="@font/zen_regular"
+        android:text="@string/phone_number"
+        android:textColor="@color/foreground"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+
+    <EditText
+        android:id="@+id/phoneNumberEdit"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/card"
+        android:ems="10"
+        android:fontFamily="@font/zen_regular"
+        android:hyphenationFrequency="normal"
+        android:inputType="phone"
+        android:padding="11dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/foreground"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/Edit2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/listenerEdit1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="-20dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginBottom="-20dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/Edit1"
+            app:layout_constraintEnd_toEndOf="@+id/Edit1"
+            app:layout_constraintStart_toStartOf="@+id/Edit1"
+            app:layout_constraintTop_toTopOf="@+id/Edit1"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/Edit1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toBottomOf="@+id/userName"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/userName"
+            app:layout_constraintTop_toTopOf="@+id/userName"
+            app:srcCompat="@drawable/ic_edit"
+            app:tint="@color/foreground" />
+
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_vadim" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/zen_regular"
+            android:text="Вадим Вадима"
+            android:textAlignment="center"
+            android:textColor="@color/foreground"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toStartOf="@+id/Edit1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileIcon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/Edit3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/cityEdit"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cityEdit"
+        app:srcCompat="@drawable/ic_edit"
+        app:tint="@color/foreground" />
+
+    <ImageView
+        android:id="@+id/Edit4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/emailEdit"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/emailEdit"
+        app:srcCompat="@drawable/ic_edit"
+        app:tint="@color/foreground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
