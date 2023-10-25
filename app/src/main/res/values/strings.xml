@@ -20,4 +20,7 @@
     <string name="payment_metod">Payment metod</string>
     <string name="subscription_info1">You can cancel your subscription renewal no later than 24 hours before debiting</string>
     <string name="subscription_disable">Disable subscription</string>
+    <string name="subscription_is_disable">Subscription is disable</string>
+    <string name="subscription_info2">Subscribe to Plus and get access to all the features of the application. By subscribing, you support SVOih developers.</string>
+    <string name="subscription_enable">Subscribe</string>
 </resources>

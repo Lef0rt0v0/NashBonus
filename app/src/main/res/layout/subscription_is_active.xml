@@ -37,7 +37,7 @@
         app:srcCompat="@drawable/ic_z_plus" />
 
     <TextView
-        android:id="@+id/subscriptionStatus"
+        android:id="@+id/subscriptionStatuseEnable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -61,7 +61,7 @@
         android:textColor="@color/foreground"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subscriptionStatus" />
+        app:layout_constraintTop_toBottomOf="@+id/subscriptionStatuseEnable" />
 
     <TextView
         android:id="@+id/paymentMetod"
@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/subscriptionInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -168,8 +168,9 @@
         android:textColor="#CD6FFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/subscriptionInfo" />
 
     <ru.acted.nashbonus.views.NashaButtonView
         android:id="@+id/disableSubscriptionButton"

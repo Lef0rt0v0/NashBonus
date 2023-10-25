@@ -21,4 +21,7 @@
     <string name="payment_metod">Способ оплаты</string>
     <string name="subscription_info1">Отменить продление подписки можно не позднее чем за 24 часов до списания</string>
     <string name="subscription_disable">Отменить подписку</string>
+    <string name="subscription_is_disable">Вы ещё не оформили подписку</string>
+    <string name="subscription_info2">Подпишитесь на плюс и получите доступ ко всем функциям приложения. Оформляя подписку вы поддерживаете СВОих разраотчиков.</string>
+    <string name="subscription_enable">Оформить подписку</string>
 </resources>
