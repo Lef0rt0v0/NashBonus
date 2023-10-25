@@ -15,4 +15,9 @@
     <string name="ready">Ready</string>
     <string name="shop">Shop</string>
     <string name="cardNumber">Card Number</string>
+    <string name="subscription">Subscription</string>
+    <string name="subscription_is_active">Subscription is active</string>
+    <string name="payment_metod">Payment metod</string>
+    <string name="subscription_info1">You can cancel your subscription renewal no later than 24 hours before debiting</string>
+    <string name="subscription_disable">Disable subscription</string>
 </resources>

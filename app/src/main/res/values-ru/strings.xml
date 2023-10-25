@@ -16,4 +16,9 @@
     <string name="ready">Готово</string>
     <string name="shop">Магазин</string>
     <string name="cardNumber">Номекр карты</string>
+    <string name="subscription">Подписка</string>
+    <string name="subscription_is_active">Подписк активна</string>
+    <string name="payment_metod">Способ оплаты</string>
+    <string name="subscription_info1">Отменить продление подписки можно не позднее чем за 24 часов до списания</string>
+    <string name="subscription_disable">Отменить подписку</string>
 </resources>
