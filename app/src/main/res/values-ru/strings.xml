@@ -24,4 +24,10 @@
     <string name="subscription_is_disable">Вы ещё не оформили подписку</string>
     <string name="subscription_info2">Подпишитесь на плюс и получите доступ ко всем функциям приложения. Оформляя подписку вы поддерживаете СВОих разраотчиков.</string>
     <string name="subscription_enable">Оформить подписку</string>
+    <string name="appeal_support">Обращение в поддержку</string>
+    <string name="appeal_theme">Тема обращения</string>
+    <string name="appeal_text">Текст обращения</string>
+    <string name="appeal_files_info">Объём загружаемого файла не более 25 Мб</string>
+    <string name="appeal_send">Отправить обращение</string>
+    <string name="settings_title">Настройки</string>
 </resources>

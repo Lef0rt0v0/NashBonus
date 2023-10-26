@@ -23,4 +23,10 @@
     <string name="subscription_is_disable">Subscription is disable</string>
     <string name="subscription_info2">Subscribe to Plus and get access to all the features of the application. By subscribing, you support SVOih developers.</string>
     <string name="subscription_enable">Subscribe</string>
+    <string name="appeal_support">Appeal in supporting</string>
+    <string name="appeal_theme">Appeal theme</string>
+    <string name="appeal_text">Appeal text</string>
+    <string name="appeal_files_info">Uploaded file size not more than 25 MB</string>
+    <string name="appeal_send">Send an appeal</string>
+    <string name="settings_title">Settings</string>
 </resources>
