@@ -30,4 +30,5 @@
     <string name="appeal_files_info">Объём загружаемого файла не более 25 Мб</string>
     <string name="appeal_send">Отправить обращение</string>
     <string name="settings_title">Настройки</string>
+    <string name="account">Профиль</string>
 </resources>

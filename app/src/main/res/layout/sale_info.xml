@@ -19,7 +19,7 @@
             android:id="@+id/brandIcon"
             android:layout_width="157dp"
             android:layout_height="157dp"
-            android:src="@tools:sample/avatars"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_android" />

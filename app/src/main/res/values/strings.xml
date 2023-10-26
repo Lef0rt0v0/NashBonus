@@ -29,4 +29,5 @@
     <string name="appeal_files_info">Uploaded file size not more than 25 MB</string>
     <string name="appeal_send">Send an appeal</string>
     <string name="settings_title">Settings</string>
+    <string name="account">Account</string>
 </resources>
