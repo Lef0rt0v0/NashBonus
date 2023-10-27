@@ -14,7 +14,7 @@ import ru.acted.nashbonus.databinding.ViewNashabuttonBinding
  * @property isBold Жирный ли шрифт
  * @property disabled Выключена ли кнопка
  * @property icon Id ресурса иконки (null - нет иконки)
- * @property setOnClickListener Функция для установки действия по нажатию
+ * @property setOnClickAction Функция для установки действия по нажатию
  */
 class NashaButtonView @JvmOverloads constructor(
     context: Context,
@@ -81,7 +81,7 @@ class NashaButtonView @JvmOverloads constructor(
      * Функция для установки действия по нажатию
      * @param code Лямбда-функция, типа са скобачками просто вот так: { doSomething() }
      */
-    fun setOnClickListener(code: Runnable) {
+    fun setOnClickAction(code: Runnable) {
         runnable = code
     }
 }

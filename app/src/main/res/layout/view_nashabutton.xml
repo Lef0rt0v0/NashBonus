@@ -50,7 +50,7 @@
                 android:fontFamily="@font/zen_regular"
                 android:text="buttonText"
                 android:textColor="@color/foreground"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

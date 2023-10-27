@@ -12,6 +12,12 @@ interface ActivityFragmentInteractInterface {
      * @param fragment Фрагмент, который был завершён
      */
     fun onFinishFragment(fragment: Fragment)
+
+    /**
+     * Вызывать из фрагментов когда необходимо отобразить ошибку в приложении
+     * @param text Текст ошибки
+     */
+    fun onShowError(text: String)
 }
 
 /**
