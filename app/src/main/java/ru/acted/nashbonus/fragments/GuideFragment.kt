@@ -61,7 +61,7 @@ class GuideFragment: MainFrameFragment() {
         binding.apply {
             proceedNextButton.setOnClickAction {
                 if (currentGuidePos == guideItems.lastIndex) {
-                    showError("Ваша учётная запись была заблокирована хищение и содержание ядерных отходов в особо больших количествах")
+                    showError("Ваша учётная запись была заблокирована zа хищение и содержание ядерных отходов в особо больших количествах")
                     return@setOnClickAction
                     //TODO открыть приложение!!!!
                 }
