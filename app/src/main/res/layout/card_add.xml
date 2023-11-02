@@ -19,7 +19,7 @@
         android:ems="10"
         android:fontFamily="@font/zen_regular"
         android:hyphenationFrequency="normal"
-        android:inputType="phone"
+        android:inputType="number"
         android:padding="11dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/foreground"
@@ -40,7 +40,7 @@
         android:ems="10"
         android:fontFamily="@font/zen_regular"
         android:hyphenationFrequency="normal"
-        android:inputType="phone"
+        android:inputType="text"
         android:padding="11dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/foreground"
@@ -58,7 +58,7 @@
         android:fontFamily="@font/zen_regular"
         android:text="@string/shop"
         android:textColor="@color/foreground"
-        android:textSize="23sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -71,7 +71,7 @@
         android:fontFamily="@font/zen_regular"
         android:text="@string/cardNumber"
         android:textColor="@color/foreground"
-        android:textSize="23sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brandNameEdit" />
 
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        app:cardBackgroundColor="@color/accent"
+        app:cardBackgroundColor="@color/foreground"
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +115,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/zen_regular"
                 android:text="Shop"
-                android:textColor="@color/foreground"
+                android:textColor="@color/black"
                 android:textSize="23sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +128,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/zen_regular"
                 android:text="Cad number"
-                android:textColor="@color/foreground"
+                android:textColor="@color/black"
                 android:textSize="23sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/brandName" />
@@ -138,12 +138,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/zen_regular"
                 android:text="Barcode"
-                android:textColor="@color/foreground"
+                android:textColor="@color/black"
                 android:textSize="23sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -157,11 +157,24 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
 
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_addcardphoto" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <ru.acted.nashbonus.views.NashaButtonView
+        android:id="@+id/deleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        app:button_text="Удалить"
+        app:layout_constraintBottom_toTopOf="@+id/readyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ru.acted.nashbonus.views.NashaButtonView
         android:id="@+id/readyButton"

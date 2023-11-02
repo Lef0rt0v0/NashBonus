@@ -1,18 +1,17 @@
 package ru.acted.nashbonus.fragments
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ru.acted.nashbonus.R
 import ru.acted.nashbonus.databinding.ScreenGuideBinding
-import ru.acted.nashbonus.utils.MainFrameFragment
-import ru.acted.nashbonus.utils.UniversalFuns.Companion.showError
+import ru.acted.nashbonus.utils.FrameFragment
+import ru.acted.nashbonus.utils.PreferencesKeys
+import ru.acted.nashbonus.utils.UniversalFuns.Companion.finishWork
+import ru.acted.nashbonus.utils.UniversalFuns.Companion.setSharedPreference
 
-class GuideFragment: MainFrameFragment() {
+class GuideFragment: FrameFragment() {
     data class GuideItem (
         val title: String,
         val description: String,
@@ -61,9 +60,9 @@ class GuideFragment: MainFrameFragment() {
         binding.apply {
             proceedNextButton.setOnClickAction {
                 if (currentGuidePos == guideItems.lastIndex) {
-                    showError("Ваша учётная запись была заблокирована zа хищение и содержание ядерных отходов в особо больших количествах")
+                    finishWork()
+                    requireActivity().setSharedPreference(PreferencesKeys().IS_GUIDE_COMPLETE, "true")
                     return@setOnClickAction
-                    //TODO открыть приложение!!!!
                 }
 
                 currentGuidePos++

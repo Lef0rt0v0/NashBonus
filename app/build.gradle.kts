@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version "1.5.30-1.0.0"
+    id("com.google.devtools.ksp") version "1.9.0-1.0.12"
     kotlin("kapt")
 }
 
@@ -41,18 +41,26 @@ android {
 }
 
 dependencies {
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     val room_version = "2.6.0"
-    val arch_version = "2.6.2"
 
     implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-
-    // To use Kotlin Symbol Processing (KSP)
     ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     //Coroutines usage
+    val arch_version = "2.6.2"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$arch_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$arch_version")
+
+
+    /* Zxing */
+    implementation("com.google.zxing:core:3.5.2")
+
+    /* Glide */
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+    implementation("com.github.illiashenkoo:glide-barcode:1.1.2")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

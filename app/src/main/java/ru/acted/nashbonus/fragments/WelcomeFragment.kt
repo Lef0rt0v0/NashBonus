@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import ru.acted.nashbonus.databinding.ScreenWelcomeBinding
 import ru.acted.nashbonus.utils.AuthManager
-import ru.acted.nashbonus.utils.MainFrameFragment
+import ru.acted.nashbonus.utils.FrameFragment
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.finishWork
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.makeClickableText
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.phoneRegex
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.showError
 
-class WelcomeFragment: MainFrameFragment() {
+class WelcomeFragment: FrameFragment() {
     private lateinit var binding: ScreenWelcomeBinding
 
     override fun onCreateView(

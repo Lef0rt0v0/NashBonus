@@ -23,17 +23,15 @@ class UniversalFuns {
     companion object {
         val phoneRegex = Regex("^\\+\\d{10,15}$")
 
-
-
         fun Fragment.showError(text: String) {
             if (requireActivity() is ActivityFragmentInteractInterface) {
                 (requireActivity() as ActivityFragmentInteractInterface).onShowError(text)
             }
         }
 
-        fun Fragment.finishWork() {
+        fun Fragment.finishWork(withoutAnimation: Boolean = false) {
             if (requireActivity() is ActivityFragmentInteractInterface) {
-                (requireActivity() as ActivityFragmentInteractInterface).onFinishFragment(this)
+                (requireActivity() as ActivityFragmentInteractInterface).onFinishFragment(this, withoutAnimation)
             }
         }
 

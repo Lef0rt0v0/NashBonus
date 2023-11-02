@@ -1,36 +1,72 @@
 package ru.acted.nashbonus
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.Registry
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
+import kotlinx.coroutines.runBlocking
+import ru.acted.nashbonus.adapters.CardsAdapter
 import ru.acted.nashbonus.databinding.ActivityMainBinding
+import ru.acted.nashbonus.fragments.CardFormFragment
 import ru.acted.nashbonus.fragments.GuideFragment
 import ru.acted.nashbonus.fragments.WelcomeFragment
 import ru.acted.nashbonus.utils.ActivityFragmentInteractInterface
 import ru.acted.nashbonus.utils.AuthManager
 import ru.acted.nashbonus.utils.AuthManager.Companion.LoginState.NOT_LOGGED_IN
-import ru.acted.nashbonus.utils.AuthManager.Companion.LoginState.LOGGED_IN
-import ru.acted.nashbonus.utils.AuthManager.Companion.LoginState.GUEST
+import ru.acted.nashbonus.utils.Card
+import ru.acted.nashbonus.utils.CardManager
 import ru.acted.nashbonus.utils.PreferencesKeys
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.getSharedPreference
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.makeAnimatedFragmentTransaction
 
+@GlideModule
+class MyAppGlideModule : AppGlideModule() {
+    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
+        super.registerComponents(context, glide, registry)
+    }
+}
+
 class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
 
     private val mainframeTag = "mainframe"
+
     private lateinit var binding: ActivityMainBinding
+    private lateinit var cardManager: CardManager
+    private lateinit var cardListAdapter: CardsAdapter
+
+    //Важные глобальные поля
+    private var cardItems = listOf<Card>()
     private val animationInterpolator = DecelerateInterpolator(2f)
     private val animationDuration = 300L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        cardManager = CardManager(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.apply {
+            newCardButton.setOnClickAction {
+                popupTint.visibility = View.VISIBLE
+                popupContainer.visibility = View.VISIBLE
+                supportFragmentManager.beginTransaction().replace(R.id.popupFrame, CardFormFragment()).commit()
+            }
+
+            cardListAdapter = CardsAdapter(mutableListOf()) {
+                popupTint.visibility = View.VISIBLE
+                popupContainer.visibility = View.VISIBLE
+                supportFragmentManager.beginTransaction().replace(R.id.popupFrame, CardFormFragment(cardItems[it].id)).commit()
+            }
+            cardList.layoutManager = LinearLayoutManager(this@MainActivity)
+            cardList.adapter = cardListAdapter
+
             errorView.setOnClickListener {
                 errorContainer.animate().apply {
                     interpolator = animationInterpolator
@@ -42,6 +78,10 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
                     start()
                 }
             }
+
+            popupTint.visibility = View.GONE
+            popupTint.setOnClickListener {  }
+            popupContainer.visibility = View.GONE
         }
 
         loadApplication()
@@ -49,7 +89,9 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
 
     private fun loadApplication() {
         //Логинимся, если не авторизованы
+        binding.mainWindow.visibility = View.VISIBLE
         if (AuthManager.checkUserAuth(this) == NOT_LOGGED_IN) {
+            binding.mainWindow.visibility = View.GONE
             supportFragmentManager.beginTransaction()
                 .replace(R.id.mainFrame, WelcomeFragment(), mainframeTag)
                 .commit()
@@ -57,17 +99,36 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
         }
 
         //Показываем гайд, если не показывали
-        if (getSharedPreference(PreferencesKeys().IS_GUIDE_COMPLETE, "no") == "no") {
+        if (getSharedPreference(PreferencesKeys().IS_GUIDE_COMPLETE, "false") == "false") {
+            binding.mainWindow.visibility = View.GONE
             makeAnimatedFragmentTransaction().replace(R.id.mainFrame, GuideFragment(), mainframeTag).commit()
             return
         }
+
+        //Загружаем список карточек
+        refreshCardsList()
     }
 
-    override fun onFinishFragment(fragment: Fragment) {
-        makeAnimatedFragmentTransaction().remove(fragment).commit()
+    private fun refreshCardsList() = runBlocking {
+        cardItems = cardManager.getCards()
+        cardListAdapter.setItems(cardItems.toMutableList())
+    }
+
+    override fun onFinishFragment(fragment: Fragment, withoutAnimation: Boolean) {
         when (fragment) {
             is WelcomeFragment -> loadApplication()
+            is CardFormFragment -> {
+                binding.apply {
+                    popupTint.visibility = View.GONE
+                    popupContainer.visibility = View.GONE
+                }
+                refreshCardsList()
+            }
         }
+        if (withoutAnimation)
+            supportFragmentManager.beginTransaction().remove(fragment).commit()
+        else
+            makeAnimatedFragmentTransaction().remove(fragment).commit()
     }
 
     override fun onShowError(text: String) {

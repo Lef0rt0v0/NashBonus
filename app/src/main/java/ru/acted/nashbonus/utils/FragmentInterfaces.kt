@@ -11,7 +11,7 @@ interface ActivityFragmentInteractInterface {
      * Вызывать из фрагментов когда он завершает свою работу
      * @param fragment Фрагмент, который был завершён
      */
-    fun onFinishFragment(fragment: Fragment)
+    fun onFinishFragment(fragment: Fragment, withoutAnimation: Boolean = false)
 
     /**
      * Вызывать из фрагментов когда необходимо отобразить ошибку в приложении
