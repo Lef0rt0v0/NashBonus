@@ -22,7 +22,7 @@ data class Card (
     @PrimaryKey(autoGenerate = false)
     val id: String,
     val brand: String,
-    val number: Int
+    val number: String
 )
 
 @Dao
@@ -40,7 +40,7 @@ interface CardDAO {
     suspend fun getCard(id: String): Card
 }
 
-@Database(entities = [Card::class], version = 1)
+@Database(entities = [Card::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun testDao(): CardDAO
 

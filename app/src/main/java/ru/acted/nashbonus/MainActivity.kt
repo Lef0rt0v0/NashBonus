@@ -7,10 +7,6 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Registry
-import com.bumptech.glide.annotation.GlideModule
-import com.bumptech.glide.module.AppGlideModule
 import kotlinx.coroutines.runBlocking
 import ru.acted.nashbonus.adapters.CardsAdapter
 import ru.acted.nashbonus.databinding.ActivityMainBinding
@@ -26,13 +22,6 @@ import ru.acted.nashbonus.utils.PreferencesKeys
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.getSharedPreference
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.makeAnimatedFragmentTransaction
 
-@GlideModule
-class MyAppGlideModule : AppGlideModule() {
-    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
-        super.registerComponents(context, glide, registry)
-    }
-}
-
 class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
 
     private val mainframeTag = "mainframe"
@@ -40,11 +29,29 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
     private lateinit var binding: ActivityMainBinding
     private lateinit var cardManager: CardManager
     private lateinit var cardListAdapter: CardsAdapter
+    private var cardFormFragment: CardFormFragment? = null
 
     //Важные глобальные поля
     private var cardItems = listOf<Card>()
     private val animationInterpolator = DecelerateInterpolator(2f)
     private val animationDuration = 300L
+
+    private fun openCardEditPage(_cardFormFragment: CardFormFragment) = with (binding) {
+        popupTint.visibility = View.VISIBLE
+        cardFormFragment = _cardFormFragment
+        popupContainer.visibility = View.INVISIBLE
+        supportFragmentManager.beginTransaction().replace(R.id.popupFrame, cardFormFragment!!).commit()
+        popupContainer.post {
+            popupContainer.translationY = popupContainer.height.toFloat()
+            popupContainer.visibility = View.VISIBLE
+            popupContainer.animate().apply {
+                interpolator = DecelerateInterpolator(2f)
+                duration = 350
+                translationY(0f)
+                start()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,16 +61,12 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
 
         binding.apply {
             newCardButton.setOnClickAction {
-                popupTint.visibility = View.VISIBLE
-                popupContainer.visibility = View.VISIBLE
-                supportFragmentManager.beginTransaction().replace(R.id.popupFrame, CardFormFragment()).commit()
+                openCardEditPage(CardFormFragment())
+            }
+            cardListAdapter = CardsAdapter(mutableListOf()) {
+                openCardEditPage(CardFormFragment(cardItems[it].id))
             }
 
-            cardListAdapter = CardsAdapter(mutableListOf()) {
-                popupTint.visibility = View.VISIBLE
-                popupContainer.visibility = View.VISIBLE
-                supportFragmentManager.beginTransaction().replace(R.id.popupFrame, CardFormFragment(cardItems[it].id)).commit()
-            }
             cardList.layoutManager = LinearLayoutManager(this@MainActivity)
             cardList.adapter = cardListAdapter
 
@@ -80,7 +83,11 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
             }
 
             popupTint.visibility = View.GONE
-            popupTint.setOnClickListener {  }
+            popupTint.setOnClickListener {
+                cardFormFragment?.let {
+                    onFinishFragment(it, true)
+                }
+            }
             popupContainer.visibility = View.GONE
         }
 
@@ -117,6 +124,7 @@ class MainActivity : AppCompatActivity(), ActivityFragmentInteractInterface {
     override fun onFinishFragment(fragment: Fragment, withoutAnimation: Boolean) {
         when (fragment) {
             is WelcomeFragment -> loadApplication()
+            is GuideFragment -> loadApplication()
             is CardFormFragment -> {
                 binding.apply {
                     popupTint.visibility = View.GONE

@@ -11,8 +11,46 @@ import ru.acted.nashbonus.utils.Card
 import ru.acted.nashbonus.utils.CardManager
 import ru.acted.nashbonus.utils.FrameFragment
 import ru.acted.nashbonus.utils.UniversalFuns.Companion.finishWork
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.common.BitMatrix
+import android.graphics.Bitmap
+import android.graphics.Color
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.yield
+import ru.acted.nashbonus.utils.UniversalFuns.Companion.showError
 
 class CardFormFragment(private val id: String = ""): FrameFragment() {
+
+    private suspend fun generateBarcode(content: String, width: Int, height: Int): Bitmap? {
+        return try {
+            val bitMatrix: BitMatrix = MultiFormatWriter().encode(
+                content,
+                BarcodeFormat.CODE_128,
+                width,
+                height,
+                hashMapOf(EncodeHintType.MARGIN to 1)
+            )
+
+            yield()
+
+            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+            for (x in 0 until width) {
+                for (y in 0 until height) {
+                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
+                    yield()
+                }
+            }
+            bitmap
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
 
     private lateinit var binding: CardAddBinding
     private lateinit var card: CardManager
@@ -27,15 +65,35 @@ class CardFormFragment(private val id: String = ""): FrameFragment() {
         return binding.root
     }
 
+    private var generatingJob: Job? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            rootCardInfo.setOnClickListener {  }
+
             brandNameEdit.addTextChangedListener {
-                it?.let { brandName.text = it.toString() }
+                brandName.text = if (it.isNullOrEmpty())
+                    "Магазин..."
+                else
+                    it.toString()
             }
             cardNumberEdit.addTextChangedListener {
-                it?.let { cardNumber.text = it.toString() }
+                cardNumber.text = if (it.isNullOrEmpty())
+                    "Номер карты..."
+                else
+                    it.toString()
+                generatingJob?.cancel()
+                cardBarcode.post {
+                    generatingJob = lifecycleScope.launch {
+                        var barcodeNumber = ""
+                        if (!it.isNullOrEmpty()) {
+                            barcodeNumber = it.toString()
+                        }
+                        val barcodeBitmap = generateBarcode(barcodeNumber, cardBarcode.width, cardBarcode.height)
+                        cardBarcode.setImageBitmap(barcodeBitmap)
+                    }
+                }
             }
 
             if (id.isNotEmpty()) {
@@ -51,19 +109,23 @@ class CardFormFragment(private val id: String = ""): FrameFragment() {
             readyButton.setOnClickAction {
                 brandNameEdit.error = null
                 if (brandNameEdit.text.isNotEmpty() && cardNumberEdit.text.isNotEmpty()) {
-                    runBlocking {
-                        card.insertCard(
-                            Card(
-                                id = id.ifEmpty { card.generateId(CardManager.TablePrefix.CARDS) },
-                                brand = brandName.text.toString(),
-                                number = cardNumber.text.toString().toInt()
+                    try {
+                        runBlocking {
+                            card.insertCard(
+                                Card(
+                                    id = id.ifEmpty { card.generateId(CardManager.TablePrefix.CARDS) },
+                                    brand = brandName.text.toString(),
+                                    number = cardNumber.text.toString()
+                                )
                             )
-                        )
+                        }
+                        finishWork(true)
+                    } catch (e: java.lang.Exception) {
+                        showError("Вы ввели некорректный номер карты")
                     }
-                    finishWork(true)
                 }
                 else
-                    brandNameEdit.error = "Введите номер и бренд"
+                    showError("Введите номер и бренд")
             }
 
             deleteButton.setOnClickAction {
